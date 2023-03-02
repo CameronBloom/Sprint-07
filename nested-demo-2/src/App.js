@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const style = { backgroundColor: "pink", margin: "1rem", padding: "1rem", border: "2px solid black" }
+
+function Home(props) {
+  return <h2 style={{ ...style, borderColor: "red" }}>Home Screen</h2>
 }
 
-export default App;
+function Bikes(props) {
+  return (
+    <div>
+      <h2 style={{ ...style, borderColor: "lightblue" }}>Bikes Bikes Bikes</h2>
+      <nav>
+        <Link to="mountain">Mountain Bikes</Link>&nbsp;
+        <Link to="urban">Urban Bikes</Link>
+      </nav>
+      <Routes>
+        <Route path="mountain/*" element={ <Mountain /> } />
+        <Route path="urban/*" element={ <Urban /> } />
+      </Routes>
+    </div>
+  )
+}
+
+function Mountain(props) {
+  return <h2 style={{ ...style, borderColor: "yellow" }}>Mountain Screen</h2>
+}
+
+function Urban(props) {
+  return <h2 style={{ ...style, borderColor: "green" }}>Urban Screen</h2>
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <h1>Hello</h1>
+      <nav>
+        <Link to="/">Home</Link>&nbsp;
+        <Link to="bikes">Bikes</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+        <Route path="bikes/*" element={ <Bikes /> } />
+      </Routes>
+    </BrowserRouter>
+  );
+}
