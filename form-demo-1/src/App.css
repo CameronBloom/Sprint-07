@@ -41,5 +41,30 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
   margin: 0.5rem auto;
+  max-width: 40%;
+}
+
+form button {
+  width: 50%;
+  background: pink;
+  border: solid 1px purple;
+  height: 4rem;
+  margin: 1rem;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+button:enabled,
+button[enabled]{
+  border: 1px solid black;
+  background-color: pink;
+  color: black;
 }
